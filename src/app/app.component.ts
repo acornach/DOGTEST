@@ -3,12 +3,27 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+//Importing firebase for db
+import * as firebase from 'firebase'
+
+import { StartupPage } from '../pages/startup/startup';
+
+// Initialize Firebase
+var config = {
+	apiKey: "AIzaSyB5CXbl5EfLlxcNHkh0rrVoalEuFq9jt9U",
+	authDomain: "firetest1-ccc03.firebaseapp.com",
+	databaseURL: "https://firetest1-ccc03.firebaseio.com",
+	projectId: "firetest1-ccc03",
+	storageBucket: "firetest1-ccc03.appspot.com",
+	messagingSenderId: "551343712590"
+};
+
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = StartupPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -17,6 +32,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+	firebase.initializeApp(config);
   }
 }
 

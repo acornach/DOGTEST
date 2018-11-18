@@ -1,14 +1,28 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+     SBarky 
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+	<div padding>
+		<button block ion-button (click)="searching()">Start Searching</button>
+	</div>
+	<div padding>
+		<button block ion-button (click)="yourPals()">Your Pals</button>
+	</div>
+	<div padding>
+		<button block ion-button (click)="settings()">Settings</button>
+	</div>
+	<div padding>
+		<button block ion-button (click)="yourProfile()">Your Profile</button>
+	</div>
+	<div padding>
+		<button block ion-button (click)="addDog()">Add a Dog</button>
+	</div>
+	<div>
+	{{ uid }}
+	</div>
 </ion-content>
