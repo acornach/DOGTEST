@@ -34,6 +34,38 @@
 			</div>
 		</ion-item>
 	
+		<ion-item>
+			<ion-label floating>Dog Name</ion-label>
+			<ion-input type="text" #dogName></ion-input>
+			<div padding>
+				<button block ion-button (click)="updateDogName()">updateLastName</button>
+			</div>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Looking For</ion-label>
+			<ion-input type="text" #lookingFor></ion-input>
+			<div padding>
+				<button block ion-button (click)="updateLookingFor()">updateLookingFor</button>
+			</div>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Snap Description</ion-label>
+			<ion-input type="text" #snapDescription></ion-input>
+			<div padding>
+				<button block ion-button (click)="updateSnapDescription()">updateSnapDescription</button>
+			</div>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Likes / Dislikes</ion-label>
+			<ion-input type="text" #likesDislikes></ion-input>
+			<div padding>
+				<button block ion-button (click)="updateLikesDislikes()">updateLikesDislikes</button>
+			</div>
+		</ion-item>
+
 		<div padding>
 			<button block ion-button (click)="updateInfo()">Update Info</button>
 		</div>

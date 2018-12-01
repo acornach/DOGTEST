@@ -23,6 +23,10 @@ export class ProfilePage {
 	//Variables on Page:
 	@ViewChild('fName') fName;
 	@ViewChild('lName') lName;
+	@ViewChild('lookingFor') lookingFor$;
+	@ViewChild('dogName') dogName$;
+	@ViewChild('snapDescription') snapDescription$;
+	@ViewChild('likesDislikes') likesDislikes$;
 
 	//variables for ProfilePage
 	private itemDoc: AngularFirestoreDocument<Item>;
@@ -150,6 +154,22 @@ export class ProfilePage {
 			lastNamae: this.lName
 		}
 		);
+
+	}
+
+	updateDogName(){
+
+	}
+
+	updateLookingFor(){
+
+	}
+
+	updateSnapDescription(){
+
+	}
+
+	updateLikesDislikes(){
 
 	}
 }
