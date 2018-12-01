@@ -15,7 +15,30 @@
 
 <ion-content padding>
 	<div>
-	{{ uid }}
+	Name: {{ firstName }} {{ lastName}} 
 	</div>
+
+	
+	<ion-list>
+		<ion-item>
+			<ion-label floating >First Name</ion-label>
+			<ion-input type="text" #fName></ion-input>
+				<button block ion-button (click)="upDateFirstName()">updateFirstName</button>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label floating>Last Name</ion-label>
+			<ion-input type="text" #lName></ion-input>
+			<div padding>
+				<button block ion-button (click)="upDateLastName()">updateLastName</button>
+			</div>
+		</ion-item>
+	
+		<div padding>
+			<button block ion-button (click)="updateInfo()">Update Info</button>
+		</div>
+		</ion-list>
+
+	
 
 </ion-content>
