@@ -14,60 +14,48 @@
 
 
 <ion-content padding>
-	<div>
-	Name: {{ firstName }} {{ lastName}} 
-	</div>
 
 	
 	<ion-list>
 		<ion-item>
 			<ion-label floating >First Name</ion-label>
-			<ion-input type="text" #fName></ion-input>
-				<button block ion-button (click)="upDateFirstName()">updateFirstName</button>
+			<ion-input type="text" [(ngModel)]="fName$"></ion-input>
+				
 		</ion-item>
-	
+		<button block ion-button (click)="updateFirstName()">updateFirstName</button>
+
 		<ion-item>
 			<ion-label floating>Last Name</ion-label>
-			<ion-input type="text" #lName></ion-input>
-			<div padding>
-				<button block ion-button (click)="upDateLastName()">updateLastName</button>
-			</div>
+			<ion-input type="text" [(ngModel)]="lName$"></ion-input>
 		</ion-item>
+		<button block ion-button (click)="updateLastName()">updateLastName</button>
 	
 		<ion-item>
 			<ion-label floating>Dog Name</ion-label>
-			<ion-input type="text" #dogName></ion-input>
-			<div padding>
-				<button block ion-button (click)="updateDogName()">updateLastName</button>
-			</div>
+			<ion-input type="text" [(ngModel)]="dogName$"></ion-input>
 		</ion-item>
+		<button block ion-button (click)="updateDogName()">updateDogName</button>
 
 		<ion-item>
 			<ion-label floating>Looking For</ion-label>
-			<ion-input type="text" #lookingFor></ion-input>
-			<div padding>
-				<button block ion-button (click)="updateLookingFor()">updateLookingFor</button>
-			</div>
+			<ion-input type="text" [(ngModel)]="lookingFor$"></ion-input>
 		</ion-item>
+		<button block ion-button (click)="updateLookingFor()">updateLookingFor</button>
 
 		<ion-item>
 			<ion-label floating>Snap Description</ion-label>
-			<ion-input type="text" #snapDescription></ion-input>
-			<div padding>
-				<button block ion-button (click)="updateSnapDescription()">updateSnapDescription</button>
-			</div>
+			<ion-input type="text" [(ngModel)]="snapDescription$"></ion-input>
 		</ion-item>
-
+		<button block ion-button (click)="updateSnapDescription()">updateSnapDescription</button>
+		
 		<ion-item>
 			<ion-label floating>Likes / Dislikes</ion-label>
-			<ion-input type="text" #likesDislikes></ion-input>
-			<div padding>
-				<button block ion-button (click)="updateLikesDislikes()">updateLikesDislikes</button>
-			</div>
+			<ion-input type="text" [(ngModel)]="likesDislikes$"></ion-input>
 		</ion-item>
+		<button block ion-button (click)="updateLikesDislikes()">updateLikesDislikes</button>
 
 		<div padding>
-			<button block ion-button (click)="updateInfo()">Update Info</button>
+			<button block ion-button (click)="updateInfo()">Update All Info</button>
 		</div>
 		</ion-list>
 

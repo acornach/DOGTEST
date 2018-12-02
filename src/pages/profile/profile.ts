@@ -21,12 +21,14 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 export class ProfilePage {
 
 	//Variables on Page:
-	@ViewChild('fName') fName;
-	@ViewChild('lName') lName;
+	@ViewChild('fName') fName$;
+	@ViewChild('lName') lName$;
 	@ViewChild('lookingFor') lookingFor$;
 	@ViewChild('dogName') dogName$;
 	@ViewChild('snapDescription') snapDescription$;
 	@ViewChild('likesDislikes') likesDislikes$;
+
+	TEST: string;
 
 	//variables for ProfilePage
 	private itemDoc: AngularFirestoreDocument<Item>;
@@ -38,6 +40,11 @@ export class ProfilePage {
 	private userName: string;	//Should be passed similar to uid
 	private firstName: string;	//Fetched from Firebase document
 	private lastName: string;	//Fetched from Firebase document
+	private dogName: string;	//Fetched from Firebase document
+	private lookingFor: string;
+	private snapDescription: string;
+	private likesDislikes: string;
+
 	private dogPhotoPath: string;	//Fetched from Firebase image
 	private humanPhotoPath: string;	//Fetched from Firebase image
 
@@ -69,12 +76,20 @@ export class ProfilePage {
 				console.log("doc: humanProfile/" + this.uid + " found!");
 				console.log("doc: humanProfile/" + this.uid + " found!");
 				//This line binds a Document tothe user
-				this.itemDoc = afs.doc<Item>('humanProfile/yoh59JUTatWayKRim3Th');
+				this.itemDoc = afs.doc<Item>('humanProfile/'+this.uid);
 				this.itemDoc.valueChanges().forEach( data => { 
 					this.firstName = data["firstName"],
-					this.fName = this.firstName,
+					this.fName$ = this.firstName,
 					this.lastName = data["lastName"],
-					this.lName = this.lastName
+					this.lName$ = this.lastName,
+					this.dogName = data["dogName"],
+					this.dogName$ = this.dogName,
+					this.lookingFor = data["lookingFor"],
+					this.lookingFor$ = this.lookingFor,
+					this.snapDescription = data["snapDescription"],
+					this.snapDescription$ = this.snapDescription,
+					this.likesDislikes = data["likesDislikes"],
+					this.likesDislikes$ = this.likesDislikes
 				}); //Access by value
 			}
 			else{
@@ -85,23 +100,23 @@ export class ProfilePage {
 		});
 
 		//CHeck if document exists:
-		afs.doc<Item>('humanProfile/'+'yoh59JUTatWayKRim3Th').valueChanges().subscribe( res => {
+		/*afs.doc<Item>('humanProfile/'+'yoh59JUTatWayKRim3Th').valueChanges().subscribe( res => {
 			if(res){
 				console.log("doc: humanProfile/" + 'yoh59JUTatWayKRim3Th' + " found!");
 				//This line binds a Document tothe user
 				this.itemDoc = afs.doc<Item>('humanProfile/yoh59JUTatWayKRim3Th');
 				this.itemDoc.valueChanges().forEach( data => { 
-					this.firstName = data["firstName"],
-					this.fName = this.firstName,
-					this.lastName = data["lastName"],
-					this.lName = this.lastName
+					//this.firstName = data["firstName"],
+					this.fName$ = this.firstName,
+					//this.lastName = data["lastName"]
+					this.lName$ = this.lastName
 				}); //Access by value
 			}
 			else{
 				console.log("doc: humanProfile/" + 'yoh59JUTatWayKRim3Th' + " not found");
 			}
 
-		});
+		});*/
 
 	});
 	
@@ -140,36 +155,98 @@ export class ProfilePage {
 
 //Updating methods
 	updateFirstName(){
-		console.log('New First name: ' + this.fName)
+		this.afs.collection('humanProfile').doc(this.uid).update({
+			firstName: this.fName$
+		})
+		.then(function() {
+			console.log('New First name: ' + this.fName$)
+		})
+		.catch(function(error) {
+			// The document probably doesn't exist.
+			console.error("Error updating document: ", error);
+		});
+		
 	}
 
 	updateLastName(){
-		console.log('New Last name: ' + this.lName)
+		this.afs.collection('humanProfile').doc(this.uid).update({
+			lastName: this.lName$
+		})
+		.then(function() {
+			console.log('New Last name: ' + this.lName$)
+		})
+		.catch(function(error) {
+			// The document probably doesn't exist.
+			console.error("Error updating document: ", error);
+		});
+		
 	}
 
 	updateInfo(){
+		
 		//This line will create a document in humanProfile collection with the ID
 		this.afs.collection('humanProfile').doc(this.uid).set({
-			firstName: this.fName,
-			lastNamae: this.lName
+			firstName: this.fName$,
+			lastName: this.lName$,
+			dogName: this.dogName$,
+			lookingFor: this.lookingFor$,
+			snapDescription: this.snapDescription$,
+			likesDislikes: this.likesDislikes$
 		}
 		);
 
 	}
 
 	updateDogName(){
-
+		this.afs.collection('humanProfile').doc(this.uid).update({
+			dogName: this.dogName$
+		})
+		.then(function() {
+			console.log('New dog name: ' + this.dogName$)
+		})
+		.catch(function(error) {
+			// The document probably doesn't exist.
+			console.error("Error updating document: ", error);
+		});
+		
 	}
 
 	updateLookingFor(){
-
+		this.afs.collection('humanProfile').doc(this.uid).update({
+			lookingFor: this.lookingFor$
+		})
+		.then(function() {
+			console.log('New looking for: ' + this.lookingFor$)
+		})
+		.catch(function(error) {
+			// The document probably doesn't exist.
+			console.error("Error updating document: ", error);
+		});
 	}
 
 	updateSnapDescription(){
-
+		this.afs.collection('humanProfile').doc(this.uid).update({
+			snapDescription: this.snapDescription$
+		})
+		.then(function() {
+			console.log('New description: ' + this.snapDescription$)
+		})
+		.catch(function(error) {
+			// The document probably doesn't exist.
+			console.error("Error updating document: ", error);
+		});
 	}
 
 	updateLikesDislikes(){
-
+		this.afs.collection('humanProfile').doc(this.uid).update({
+			likesDislikes: this.likesDislikes$
+		})
+		.then(function() {
+			console.log('New likes/dislikes: ' + this.likesDislikes$)
+		})
+		.catch(function(error) {
+			// The document probably doesn't exist.
+			console.error("Error updating document: ", error);
+		});
 	}
 }
