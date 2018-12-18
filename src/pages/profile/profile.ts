@@ -49,7 +49,6 @@ export class ProfilePage {
 	private humanPhotoPath: string;	//Fetched from Firebase image
 
 	//Guiding fields:
-	private lookingFor: string; //dog park, hiking buddy, etc.
 	private characterDescription: string;
 	private ownerLikesAndDislikes: string;
 
@@ -73,7 +72,8 @@ export class ProfilePage {
 		afs.doc<Item>('humanProfile/'+this.uid).valueChanges().subscribe( res => {
 			if(res){
 				this.docExists = true;
-				console.log("doc: humanProfile/" + this.uid + " found!");
+				//TODO: what to do if they have a profile. display and hide edit buttons
+
 				console.log("doc: humanProfile/" + this.uid + " found!");
 				//This line binds a Document tothe user
 				this.itemDoc = afs.doc<Item>('humanProfile/'+this.uid);
@@ -95,47 +95,21 @@ export class ProfilePage {
 			else{
 				this.docExists = false;
 				console.log("doc: humanProfile/" + this.uid + " not found");
+				//SHOW buttons and force data fill
 			}
 
-		});
-
-		//CHeck if document exists:
-		/*afs.doc<Item>('humanProfile/'+'yoh59JUTatWayKRim3Th').valueChanges().subscribe( res => {
-			if(res){
-				console.log("doc: humanProfile/" + 'yoh59JUTatWayKRim3Th' + " found!");
-				//This line binds a Document tothe user
-				this.itemDoc = afs.doc<Item>('humanProfile/yoh59JUTatWayKRim3Th');
-				this.itemDoc.valueChanges().forEach( data => { 
-					//this.firstName = data["firstName"],
-					this.fName$ = this.firstName,
-					//this.lastName = data["lastName"]
-					this.lName$ = this.lastName
-				}); //Access by value
-			}
-			else{
-				console.log("doc: humanProfile/" + 'yoh59JUTatWayKRim3Th' + " not found");
-			}
-
-		});*/
-
-	});
-	
+		});//End get doc
+	});//End subscribe event
 
 	//This line binds items to the collection humanProfile
 	//this.items = afs.collection('humanProfile').valueChanges();
 	//console.log(this.items);
 
-
-
-
-		
   }
 
 	//this.item = this.itemDoc.valueChanges().pipe();
 	//console.log(this.itemDoc.get);
 	//console.log(this.item)
-	
-	
 	
 	//this.userDoc = fireStore.doc<any>('humanProfile/' + this.uid);	//Creates a document in database with their user ID
 	/*this.userDoc.set({
@@ -146,8 +120,6 @@ export class ProfilePage {
     // Other info you want to add here
   })*/
   //}
-  
-  
 
   ionViewDidLoad() {
 		console.log('ionViewDidLoad ProfilePage');

@@ -16,5 +16,13 @@
 <ion-content padding>
 	<div>
 	{{ uid }}
-	</div>
+  </div>
+  <ion-list>
+		<ion-item>
+			<ion-label floating >Dog Name</ion-label>
+			<ion-input type="text" [(ngModel)]="dogName$"></ion-input>
+				
+		</ion-item>
+		<button block ion-button (click)="addDogName()">addDogName</button>
+  </ion-list>
 </ion-content>
