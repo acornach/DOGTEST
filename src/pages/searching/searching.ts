@@ -28,6 +28,8 @@ export class SearchingPage {
   oLat: number;
   oLong: number;
 
+  possiblePals: Array<any>;
+
   
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public events: Events, public   afDB: AngularFireDatabase, private afs: AngularFirestore,private geolocation: Geolocation) {
     //const milesPerLatLong = 69;
@@ -35,6 +37,7 @@ export class SearchingPage {
 	this.events.subscribe('data:created', (data) => {	//Gets uid passed into from login page
 		console.log( data);
     this.uid = data;
+    this.possiblePals = [];
     
     this.geolocation.getCurrentPosition().then((resp) => {
 			this.uLat = resp.coords.latitude;
@@ -51,8 +54,34 @@ export class SearchingPage {
          //Searches every person in the database.
          //TODO: Compare to lat longs and print the person out. Should try to obtain the id of the item
          console.log(person['firstName']);
-         console.log(person['currLat']);
+         this.oLat = person['currLat'];
+         this.oLong = person['currLong'];
+
+         //TODO: Break into function if possible.
+         //Figure out issue of longitude getting wrapped around the earth
+        if(this.oLat != undefined && this.oLong != undefined)
+        {
+         //69 converts lat/long into miles roughly
+         var xUser = this.uLat * 69.0; 
+         var xPal = this.oLat * 69.0;
+         var yUser = this.uLong * 69.0;
+         var yPal = this.oLong * 69.0;
+         //console.log(xUser + ", " + xPal + ", " + yUser + ", " + yPal);
+         var dx = Math.abs(xUser - xPal);
+         var dy = Math.abs(yUser - yPal);
+         //console.log(dx + ", " + dy);
+        
+         var dist = Math.sqrt(Math.pow(dx, 2.0) + Math.pow(dy, 2.0));
+        
+         //GOT distance: Only print if close enough
+         console.log(dist);
+
+         //Change to profile pic and store UID for info retrieval
+         this.possiblePals.push(person['firstName']);
+        }
        })
+
+       console.log(this.possiblePals);
      });//End get doc
   });
   
