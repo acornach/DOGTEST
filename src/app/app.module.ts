@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -25,6 +26,7 @@ import { SearchradiusPage } from '../pages/searchradius/searchradius';
 import { HelpPage } from '../pages/help/help';
 import { LogoutPage } from '../pages/logout/logout';
 import { UpgradePage } from '../pages/upgrade/upgrade';
+
 
 
 const firebaseAuth = {
@@ -84,7 +86,8 @@ const firebaseAuth = {
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+		SplashScreen,
+		Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

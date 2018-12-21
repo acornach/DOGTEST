@@ -163,9 +163,9 @@ export class ProfilePage {
 			dogName: this.dogName$,
 			lookingFor: this.lookingFor$,
 			snapDescription: this.snapDescription$,
-			likesDislikes: this.likesDislikes$
-		}
-		);
+			likesDislikes: this.likesDislikes$,
+			UID: this.uid
+		});
 
 	}
 
