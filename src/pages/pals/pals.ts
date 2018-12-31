@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { PalchatPage } from '../palchat/palchat';
 
 /**
  * Generated class for the PalsPage page.
@@ -38,6 +39,10 @@ export class PalsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PalsPage');
+  }
+
+  palchat(){
+    this.navCtrl.push(PalchatPage);
   }
 
 }

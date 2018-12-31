@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Item, Platform } from 'ionic-angular';
+import { Events } from 'ionic-angular';
+
+import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs/Observable';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 /**
  * Generated class for the PalchatPage page.
@@ -15,7 +20,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PalchatPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  //UID's for to/from are on document names only
+  uid: string;
+  toId: string;	
+  rooms = [];
+
+  //Usernames for to/from
+  toUname: string;
+  fromUname: string;
+  
+
+  	//Constructor, includes ctrls, etc..
+    constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events, public   afDB: AngularFireDatabase, private afs: AngularFirestore, private platform: Platform) {
+
+      this.events.subscribe('data:created', (data) => {	//Gets uid passed into from login page
+        //console.log( data);
+        this.uid = data;
+
+      });
+  }
+
+  //Constructor to navigate to add-room page
+  addRoom(){
+    //this.navCtrl.push(AddRoomPage);
+
   }
 
   ionViewDidLoad() {

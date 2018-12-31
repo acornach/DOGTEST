@@ -26,6 +26,7 @@ import { SearchradiusPage } from '../pages/searchradius/searchradius';
 import { HelpPage } from '../pages/help/help';
 import { LogoutPage } from '../pages/logout/logout';
 import { UpgradePage } from '../pages/upgrade/upgrade';
+import { PalchatPage } from '../pages/palchat/palchat';
 
 
 
@@ -55,7 +56,8 @@ const firebaseAuth = {
 	SearchradiusPage,
 	HelpPage,
 	LogoutPage,
-	UpgradePage
+	UpgradePage,
+	PalchatPage
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,8 @@ const firebaseAuth = {
 	SearchradiusPage,
 	HelpPage,
 	LogoutPage,
-	UpgradePage
+	UpgradePage,
+	PalchatPage
   ],
   providers: [
     StatusBar,
