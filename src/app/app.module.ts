@@ -27,6 +27,7 @@ import { HelpPage } from '../pages/help/help';
 import { LogoutPage } from '../pages/logout/logout';
 import { UpgradePage } from '../pages/upgrade/upgrade';
 import { PalchatPage } from '../pages/palchat/palchat';
+import { AddpalchatroomPage } from '../pages/addpalchatroom/addpalchatroom';
 
 
 
@@ -57,7 +58,8 @@ const firebaseAuth = {
 	HelpPage,
 	LogoutPage,
 	UpgradePage,
-	PalchatPage
+	PalchatPage,
+	AddpalchatroomPage
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,8 @@ const firebaseAuth = {
 	HelpPage,
 	LogoutPage,
 	UpgradePage,
-	PalchatPage
+	PalchatPage,
+	AddpalchatroomPage
   ],
   providers: [
     StatusBar,

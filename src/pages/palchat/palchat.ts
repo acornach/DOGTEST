@@ -5,6 +5,7 @@ import { Events } from 'ionic-angular';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AddpalchatroomPage } from '../addpalchatroom/addpalchatroom';
 
 /**
  * Generated class for the PalchatPage page.
@@ -42,7 +43,7 @@ export class PalchatPage {
 
   //Constructor to navigate to add-room page
   addRoom(){
-    //this.navCtrl.push(AddRoomPage);
+    this.navCtrl.push(AddpalchatroomPage);
 
   }
 
